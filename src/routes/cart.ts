@@ -7,7 +7,7 @@ interface Product {
   price: number;
 }
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   amount: number;
 }
 

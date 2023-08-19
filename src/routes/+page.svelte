@@ -18,6 +18,19 @@
       price: 14.99,
     },
   ];
+
+  async function checkout() {
+    const data = await fetch("/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: $cartItems,
+      }),
+    }).then((data) => data.json());
+    window.location.replace(data.url);
+  }
 </script>
 
 <main>
@@ -50,6 +63,8 @@
       {/each}
     </div>
   {/if}
+
+  <button on:click={checkout}>Checkout</button>
 </main>
 
 <style>
